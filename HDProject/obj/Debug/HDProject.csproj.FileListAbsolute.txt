@@ -2,9 +2,9 @@ C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Debug\HDProject.exe.co
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Debug\HDProject.exe
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Debug\HDProject.pdb
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.csproj.AssemblyReference.cache
-C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.Form1.resources
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.Properties.Resources.resources
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.csproj.GenerateResource.cache
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.csproj.CoreCompileInputs.cache
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.exe
 C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.pdb
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Debug\HDProject.HDForm.resources
