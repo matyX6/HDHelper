@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WK.Libraries.SharpClipboardNS;
 
 namespace HDProject
 {
@@ -21,7 +23,10 @@ namespace HDProject
         private const string INVALID_PATH_MESSAGE = "Path is not valid.";
         private const string INVALID_FILE_NAME_MESSAGE = "File name is not valid.";
         private const string ERROR_CAPTION = "Error";
+        private const string HD_PIANO_URL = "https://hdpiano.com/";
+        private const string GET_VIDEO_URL = "https://getvideo.at/en/";
 
+        private SharpClipboard clipboard = new SharpClipboard();
 
         private string FullPath => originTextbox.Text + "\\" + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
         private string AutoCompletePath => Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "\\autoDB.txt";
@@ -38,6 +43,9 @@ namespace HDProject
         {
             LoadBaseValues();
             UpdateVideoAutocompleteSource();
+
+            clipboard.ClipboardChanged += OnClipboardChanged;
+            UpdateClipboardLabel(Clipboard.GetText());
         }
 
         #region labels
@@ -115,6 +123,15 @@ namespace HDProject
             clearKeysButton_Click(sender, e);
         }
 
+        private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(GET_VIDEO_URL);
+        }
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(HD_PIANO_URL);
+        }
+
         private void updateDirs_Click(object sender, EventArgs e)
         {
             if (!TryValidatePath(out string message))
@@ -142,10 +159,7 @@ namespace HDProject
         private void keyList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (keyList.SelectedItem != null)
-            {
                 Clipboard.SetText(WISTIA_EMBED + keyList.SelectedItem.ToString());
-                clipboardText.Text = CLIPBOARD_LABEL + Clipboard.GetText();
-            }
         }
         #endregion
 
@@ -344,6 +358,16 @@ namespace HDProject
                     return false;
 
             return true;
+        }
+
+        private void OnClipboardChanged(object sender, SharpClipboard.ClipboardChangedEventArgs e)
+        {
+            UpdateClipboardLabel(e.Content.ToString());
+        }
+
+        private void UpdateClipboardLabel(string text)
+        {
+            clipboardText.Text = CLIPBOARD_LABEL + text;
         }
         #endregion
     }
