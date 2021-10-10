@@ -61,6 +61,22 @@ namespace HDProject
             UpdateVideosListIndexes();
         }
 
+        private void clearVideosButton_Click(object sender, EventArgs e)
+        {
+            videoList.Items.Clear();
+        }
+
+        private void clearKeysButton_Click(object sender, EventArgs e)
+        {
+            keyList.Items.Clear();
+        }
+
+        private void clearAllButton_Click(object sender, EventArgs e)
+        {
+            clearVideosButton_Click(sender, e);
+            clearKeysButton_Click(sender, e);
+        }
+
         private void updateDirs_Click(object sender, EventArgs e)
         {
             Directory.CreateDirectory(FullPath);

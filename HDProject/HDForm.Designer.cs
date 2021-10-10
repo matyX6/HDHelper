@@ -46,6 +46,10 @@ namespace HDProject
             this.keyCountLabel = new System.Windows.Forms.Label();
             this.clipboardText = new System.Windows.Forms.Label();
             this.updateDirs = new System.Windows.Forms.Button();
+            this.clearVideosButton = new System.Windows.Forms.Button();
+            this.clearLabel = new System.Windows.Forms.Label();
+            this.clearKeysButton = new System.Windows.Forms.Button();
+            this.clearAllButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // originLabel
@@ -203,7 +207,7 @@ namespace HDProject
             // 
             // updateDirs
             // 
-            this.updateDirs.Location = new System.Drawing.Point(623, 395);
+            this.updateDirs.Location = new System.Drawing.Point(623, 375);
             this.updateDirs.Name = "updateDirs";
             this.updateDirs.Size = new System.Drawing.Size(165, 34);
             this.updateDirs.TabIndex = 16;
@@ -212,12 +216,58 @@ namespace HDProject
             this.updateDirs.UseVisualStyleBackColor = true;
             this.updateDirs.Click += new System.EventHandler(this.updateDirs_Click);
             // 
+            // clearVideosButton
+            // 
+            this.clearVideosButton.Location = new System.Drawing.Point(623, 269);
+            this.clearVideosButton.Name = "clearVideosButton";
+            this.clearVideosButton.Size = new System.Drawing.Size(91, 23);
+            this.clearVideosButton.TabIndex = 17;
+            this.clearVideosButton.TabStop = false;
+            this.clearVideosButton.Text = "Videos";
+            this.clearVideosButton.UseVisualStyleBackColor = true;
+            this.clearVideosButton.Click += new System.EventHandler(this.clearVideosButton_Click);
+            // 
+            // clearLabel
+            // 
+            this.clearLabel.AutoSize = true;
+            this.clearLabel.Location = new System.Drawing.Point(620, 249);
+            this.clearLabel.Name = "clearLabel";
+            this.clearLabel.Size = new System.Drawing.Size(45, 17);
+            this.clearLabel.TabIndex = 18;
+            this.clearLabel.Text = "Clear:";
+            // 
+            // clearKeysButton
+            // 
+            this.clearKeysButton.Location = new System.Drawing.Point(623, 298);
+            this.clearKeysButton.Name = "clearKeysButton";
+            this.clearKeysButton.Size = new System.Drawing.Size(91, 23);
+            this.clearKeysButton.TabIndex = 19;
+            this.clearKeysButton.TabStop = false;
+            this.clearKeysButton.Text = "Keys";
+            this.clearKeysButton.UseVisualStyleBackColor = true;
+            this.clearKeysButton.Click += new System.EventHandler(this.clearKeysButton_Click);
+            // 
+            // clearAllButton
+            // 
+            this.clearAllButton.Location = new System.Drawing.Point(623, 327);
+            this.clearAllButton.Name = "clearAllButton";
+            this.clearAllButton.Size = new System.Drawing.Size(91, 23);
+            this.clearAllButton.TabIndex = 20;
+            this.clearAllButton.TabStop = false;
+            this.clearAllButton.Text = "All";
+            this.clearAllButton.UseVisualStyleBackColor = true;
+            this.clearAllButton.Click += new System.EventHandler(this.clearAllButton_Click);
+            // 
             // HDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 528);
+            this.Controls.Add(this.clearAllButton);
+            this.Controls.Add(this.clearKeysButton);
+            this.Controls.Add(this.clearLabel);
+            this.Controls.Add(this.clearVideosButton);
             this.Controls.Add(this.updateDirs);
             this.Controls.Add(this.clipboardText);
             this.Controls.Add(this.keyCountLabel);
@@ -261,6 +311,10 @@ namespace HDProject
         private System.Windows.Forms.Label keyCountLabel;
         private System.Windows.Forms.Label clipboardText;
         private System.Windows.Forms.Button updateDirs;
+        private System.Windows.Forms.Button clearVideosButton;
+        private System.Windows.Forms.Label clearLabel;
+        private System.Windows.Forms.Button clearKeysButton;
+        private System.Windows.Forms.Button clearAllButton;
     }
 }
 
