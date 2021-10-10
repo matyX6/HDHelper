@@ -51,6 +51,7 @@ namespace HDProject
             this.clearKeysButton = new System.Windows.Forms.Button();
             this.clearAllButton = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
+            this.pathBodyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // originLabel
@@ -211,9 +212,9 @@ namespace HDProject
             // 
             // updateDirs
             // 
-            this.updateDirs.Location = new System.Drawing.Point(623, 375);
+            this.updateDirs.Location = new System.Drawing.Point(585, 375);
             this.updateDirs.Name = "updateDirs";
-            this.updateDirs.Size = new System.Drawing.Size(165, 34);
+            this.updateDirs.Size = new System.Drawing.Size(193, 34);
             this.updateDirs.TabIndex = 16;
             this.updateDirs.TabStop = false;
             this.updateDirs.Text = "Update Directories";
@@ -222,7 +223,7 @@ namespace HDProject
             // 
             // clearVideosButton
             // 
-            this.clearVideosButton.Location = new System.Drawing.Point(623, 269);
+            this.clearVideosButton.Location = new System.Drawing.Point(585, 269);
             this.clearVideosButton.Name = "clearVideosButton";
             this.clearVideosButton.Size = new System.Drawing.Size(91, 23);
             this.clearVideosButton.TabIndex = 17;
@@ -234,7 +235,7 @@ namespace HDProject
             // clearLabel
             // 
             this.clearLabel.AutoSize = true;
-            this.clearLabel.Location = new System.Drawing.Point(620, 249);
+            this.clearLabel.Location = new System.Drawing.Point(582, 249);
             this.clearLabel.Name = "clearLabel";
             this.clearLabel.Size = new System.Drawing.Size(45, 17);
             this.clearLabel.TabIndex = 18;
@@ -242,7 +243,7 @@ namespace HDProject
             // 
             // clearKeysButton
             // 
-            this.clearKeysButton.Location = new System.Drawing.Point(623, 298);
+            this.clearKeysButton.Location = new System.Drawing.Point(585, 298);
             this.clearKeysButton.Name = "clearKeysButton";
             this.clearKeysButton.Size = new System.Drawing.Size(91, 23);
             this.clearKeysButton.TabIndex = 19;
@@ -253,7 +254,7 @@ namespace HDProject
             // 
             // clearAllButton
             // 
-            this.clearAllButton.Location = new System.Drawing.Point(623, 327);
+            this.clearAllButton.Location = new System.Drawing.Point(585, 327);
             this.clearAllButton.Name = "clearAllButton";
             this.clearAllButton.Size = new System.Drawing.Size(91, 23);
             this.clearAllButton.TabIndex = 20;
@@ -273,12 +274,20 @@ namespace HDProject
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
+            // pathBodyLabel
+            // 
+            this.pathBodyLabel.Location = new System.Drawing.Point(585, 45);
+            this.pathBodyLabel.Name = "pathBodyLabel";
+            this.pathBodyLabel.Size = new System.Drawing.Size(193, 132);
+            this.pathBodyLabel.TabIndex = 23;
+            // 
             // HDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(800, 528);
+            this.ClientSize = new System.Drawing.Size(845, 561);
+            this.Controls.Add(this.pathBodyLabel);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.clearAllButton);
             this.Controls.Add(this.clearKeysButton);
@@ -332,6 +341,7 @@ namespace HDProject
         private System.Windows.Forms.Button clearKeysButton;
         private System.Windows.Forms.Button clearAllButton;
         private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.Label pathBodyLabel;
     }
 }
 

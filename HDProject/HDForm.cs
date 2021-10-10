@@ -47,16 +47,19 @@ namespace HDProject
         private void originTextbox_TextChanged(object sender, EventArgs e)
         {
             UpdateSaveDB();
+            UpdateFullPathLabel();
         }
 
         private void artistTextbox_TextChanged(object sender, EventArgs e)
         {
             UpdateSaveDB();
+            UpdateFullPathLabel();
         }
 
         private void songTextbox_TextChanged(object sender, EventArgs e)
         {
             UpdateSaveDB();
+            UpdateFullPathLabel();
         }
         #endregion
 
@@ -296,6 +299,11 @@ namespace HDProject
                 keyList.Items.RemoveAt(keyList.SelectedIndex);
             else
                 keyTextBox.Clear();
+        }
+
+        private void UpdateFullPathLabel()
+        {
+            pathBodyLabel.Text = FullPath;
         }
 
         private void UpdateKeyCountLabel()
