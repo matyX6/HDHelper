@@ -184,9 +184,9 @@ namespace HDProject
             this.keyCountLabel.AutoSize = true;
             this.keyCountLabel.Location = new System.Drawing.Point(12, 412);
             this.keyCountLabel.Name = "keyCountLabel";
-            this.keyCountLabel.Size = new System.Drawing.Size(49, 17);
+            this.keyCountLabel.Size = new System.Drawing.Size(61, 17);
             this.keyCountLabel.TabIndex = 14;
-            this.keyCountLabel.Text = "Count:";
+            this.keyCountLabel.Text = "Count: 0";
             // 
             // clipboardText
             // 

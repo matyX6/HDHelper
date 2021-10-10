@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,6 +18,12 @@ namespace HDProject
         private const string WVIDEO_KEYWORD = "wvideo=";
         private const string CLIPBOARD_LABEL = "Clipboard: ";
         private const string COUNT_LABEL = "Count: ";
+        private const string AUTO_COMPLETE_PATH = "C:\\Users\\matyX6\\Desktop\\HDPiano\\autoDB.txt";
+
+
+        private string FullPath => originTextbox.Text + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
+
+
 
         public HDForm()
         {
@@ -48,6 +55,7 @@ namespace HDProject
         {
             AddVideoToList();
             UpdateVideosListIndexes();
+            AddVideoNameToAutocomplete();
         }
         private void removeVideoButton_Click(object sender, EventArgs e)
         {
@@ -57,7 +65,18 @@ namespace HDProject
 
         private void updateDirs_Click(object sender, EventArgs e)
         {
+            Directory.CreateDirectory(FullPath);
 
+            for (int i = 0; i < videoList.Items.Count; i++)
+            {
+                string path = FullPath + videoList.Items[i].ToString();
+
+                if (!File.Exists(path))
+                {
+                    FileStream fs = File.Create(path);
+                    fs.Close();
+                }
+            }
         }
 
         #endregion
@@ -79,6 +98,7 @@ namespace HDProject
             {
                 AddVideoToList();
                 UpdateVideosListIndexes();
+                AddVideoNameToAutocomplete();
             }
         }
 
@@ -108,12 +128,23 @@ namespace HDProject
         {
             //x will be replaced on update with items placement number
             videoList.Items.Add("x_" + videoTextbox.Text + ".mp4");
+            videoTextbox.Clear();
         }
 
         private void RemoveVideoFromList()
         {
             if (videoList.SelectedItem != null)
                 videoList.Items.RemoveAt(videoList.SelectedIndex);
+            else
+                videoTextbox.Clear();
+        }
+
+        private void AddVideoNameToAutocomplete()
+        {
+            StreamWriter sw = File.CreateText(AUTO_COMPLETE_PATH);
+            sw.WriteLine(videoTextbox.Text.ToString());
+            sw.Flush();
+            sw.Close();
         }
 
         private void AddKeyToList()
