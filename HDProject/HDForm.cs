@@ -24,13 +24,13 @@ namespace HDProject
         private const string ERROR_CAPTION = "Error";
 
 
-        private string FullPath => originTextbox.Text + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
+        private string FullPath => originTextbox.Text + "\\" + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
 
 
         public HDForm()
         {
             InitializeComponent();
-            originTextbox.Text = "C:\\Users\\matyX6\\Desktop\\HDPiano\\";
+            originTextbox.Text = "C:\\Users\\matyX6\\Desktop\\HDPiano";
             UpdateVideoAutocompleteSource();
         }
 
@@ -271,5 +271,16 @@ namespace HDProject
             keyCountLabel.Text = COUNT_LABEL + keyList.Items.Count;
         }
         #endregion
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                    originTextbox.Text = fbd.SelectedPath;
+            }
+        }
     }
 }

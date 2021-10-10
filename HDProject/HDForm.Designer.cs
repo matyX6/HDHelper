@@ -50,6 +50,7 @@ namespace HDProject
             this.clearLabel = new System.Windows.Forms.Label();
             this.clearKeysButton = new System.Windows.Forms.Button();
             this.clearAllButton = new System.Windows.Forms.Button();
+            this.browseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // originLabel
@@ -65,7 +66,7 @@ namespace HDProject
             // 
             this.originTextbox.Location = new System.Drawing.Point(64, 9);
             this.originTextbox.Name = "originTextbox";
-            this.originTextbox.Size = new System.Drawing.Size(453, 22);
+            this.originTextbox.Size = new System.Drawing.Size(365, 22);
             this.originTextbox.TabIndex = 5;
             // 
             // artistLabel
@@ -258,12 +259,24 @@ namespace HDProject
             this.clearAllButton.UseVisualStyleBackColor = true;
             this.clearAllButton.Click += new System.EventHandler(this.clearAllButton_Click);
             // 
+            // browseButton
+            // 
+            this.browseButton.Location = new System.Drawing.Point(435, 8);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(82, 23);
+            this.browseButton.TabIndex = 21;
+            this.browseButton.TabStop = false;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            // 
             // HDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 528);
+            this.Controls.Add(this.browseButton);
             this.Controls.Add(this.clearAllButton);
             this.Controls.Add(this.clearKeysButton);
             this.Controls.Add(this.clearLabel);
@@ -315,6 +328,7 @@ namespace HDProject
         private System.Windows.Forms.Label clearLabel;
         private System.Windows.Forms.Button clearKeysButton;
         private System.Windows.Forms.Button clearAllButton;
+        private System.Windows.Forms.Button browseButton;
     }
 }
 
