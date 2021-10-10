@@ -45,6 +45,7 @@ namespace HDProject
             this.removeKeyButton = new System.Windows.Forms.Button();
             this.keyCountLabel = new System.Windows.Forms.Label();
             this.clipboardText = new System.Windows.Forms.Label();
+            this.updateDirs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // originLabel
@@ -86,23 +87,25 @@ namespace HDProject
             this.artistTextbox.Location = new System.Drawing.Point(64, 45);
             this.artistTextbox.Name = "artistTextbox";
             this.artistTextbox.Size = new System.Drawing.Size(215, 22);
-            this.artistTextbox.TabIndex = 4;
+            this.artistTextbox.TabIndex = 2;
             // 
             // songTextbox
             // 
             this.songTextbox.Location = new System.Drawing.Point(64, 78);
             this.songTextbox.Name = "songTextbox";
             this.songTextbox.Size = new System.Drawing.Size(215, 22);
-            this.songTextbox.TabIndex = 5;
+            this.songTextbox.TabIndex = 3;
             // 
             // keyList
             // 
+            this.keyList.BackColor = System.Drawing.SystemColors.Info;
             this.keyList.FormattingEnabled = true;
             this.keyList.ItemHeight = 16;
             this.keyList.Location = new System.Drawing.Point(15, 277);
             this.keyList.Name = "keyList";
-            this.keyList.Size = new System.Drawing.Size(502, 116);
+            this.keyList.Size = new System.Drawing.Size(502, 132);
             this.keyList.TabIndex = 6;
+            this.keyList.TabStop = false;
             this.keyList.SelectedIndexChanged += new System.EventHandler(this.keyList_SelectedIndexChanged);
             // 
             // keyTextBox
@@ -110,7 +113,8 @@ namespace HDProject
             this.keyTextBox.Location = new System.Drawing.Point(15, 249);
             this.keyTextBox.Name = "keyTextBox";
             this.keyTextBox.Size = new System.Drawing.Size(502, 22);
-            this.keyTextBox.TabIndex = 7;
+            this.keyTextBox.TabIndex = 5;
+            this.keyTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyTextBox_KeyDown);
             // 
             // addKeyButton
             // 
@@ -118,42 +122,48 @@ namespace HDProject
             this.addKeyButton.Name = "addKeyButton";
             this.addKeyButton.Size = new System.Drawing.Size(348, 23);
             this.addKeyButton.TabIndex = 8;
+            this.addKeyButton.TabStop = false;
             this.addKeyButton.Text = "Add Key";
             this.addKeyButton.UseVisualStyleBackColor = true;
             this.addKeyButton.Click += new System.EventHandler(this.addKeyButton_Click);
             // 
             // videoList
             // 
+            this.videoList.BackColor = System.Drawing.SystemColors.Info;
             this.videoList.FormattingEnabled = true;
             this.videoList.ItemHeight = 16;
             this.videoList.Location = new System.Drawing.Point(285, 45);
             this.videoList.Name = "videoList";
             this.videoList.Size = new System.Drawing.Size(232, 132);
             this.videoList.TabIndex = 9;
+            this.videoList.TabStop = false;
             // 
             // videoTextbox
             // 
             this.videoTextbox.Location = new System.Drawing.Point(64, 155);
             this.videoTextbox.Name = "videoTextbox";
             this.videoTextbox.Size = new System.Drawing.Size(218, 22);
-            this.videoTextbox.TabIndex = 10;
+            this.videoTextbox.TabIndex = 4;
+            this.videoTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.videoTextbox_KeyDown);
             // 
             // addVideoButton
             // 
             this.addVideoButton.Location = new System.Drawing.Point(64, 127);
             this.addVideoButton.Name = "addVideoButton";
-            this.addVideoButton.Size = new System.Drawing.Size(145, 23);
+            this.addVideoButton.Size = new System.Drawing.Size(134, 23);
             this.addVideoButton.TabIndex = 11;
+            this.addVideoButton.TabStop = false;
             this.addVideoButton.Text = "Add Video";
             this.addVideoButton.UseVisualStyleBackColor = true;
             this.addVideoButton.Click += new System.EventHandler(this.addVideoButton_Click);
             // 
             // removeVideoButton
             // 
-            this.removeVideoButton.Location = new System.Drawing.Point(212, 127);
+            this.removeVideoButton.Location = new System.Drawing.Point(204, 127);
             this.removeVideoButton.Name = "removeVideoButton";
-            this.removeVideoButton.Size = new System.Drawing.Size(70, 23);
+            this.removeVideoButton.Size = new System.Drawing.Size(78, 23);
             this.removeVideoButton.TabIndex = 12;
+            this.removeVideoButton.TabStop = false;
             this.removeVideoButton.Text = "Remove";
             this.removeVideoButton.UseVisualStyleBackColor = true;
             this.removeVideoButton.Click += new System.EventHandler(this.removeVideoButton_Click);
@@ -164,6 +174,7 @@ namespace HDProject
             this.removeKeyButton.Name = "removeKeyButton";
             this.removeKeyButton.Size = new System.Drawing.Size(148, 23);
             this.removeKeyButton.TabIndex = 13;
+            this.removeKeyButton.TabStop = false;
             this.removeKeyButton.Text = "Remove";
             this.removeKeyButton.UseVisualStyleBackColor = true;
             this.removeKeyButton.Click += new System.EventHandler(this.removeKeyButton_Click);
@@ -171,7 +182,7 @@ namespace HDProject
             // keyCountLabel
             // 
             this.keyCountLabel.AutoSize = true;
-            this.keyCountLabel.Location = new System.Drawing.Point(12, 396);
+            this.keyCountLabel.Location = new System.Drawing.Point(12, 412);
             this.keyCountLabel.Name = "keyCountLabel";
             this.keyCountLabel.Size = new System.Drawing.Size(49, 17);
             this.keyCountLabel.TabIndex = 14;
@@ -180,17 +191,30 @@ namespace HDProject
             // clipboardText
             // 
             this.clipboardText.AutoSize = true;
-            this.clipboardText.Location = new System.Drawing.Point(126, 396);
+            this.clipboardText.Location = new System.Drawing.Point(126, 412);
             this.clipboardText.Name = "clipboardText";
             this.clipboardText.Size = new System.Drawing.Size(72, 17);
             this.clipboardText.TabIndex = 15;
             this.clipboardText.Text = "Clipboard:";
             // 
+            // updateDirs
+            // 
+            this.updateDirs.Location = new System.Drawing.Point(623, 395);
+            this.updateDirs.Name = "updateDirs";
+            this.updateDirs.Size = new System.Drawing.Size(165, 34);
+            this.updateDirs.TabIndex = 16;
+            this.updateDirs.TabStop = false;
+            this.updateDirs.Text = "Update Directories";
+            this.updateDirs.UseVisualStyleBackColor = true;
+            this.updateDirs.Click += new System.EventHandler(this.updateDirs_Click);
+            // 
             // HDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ClientSize = new System.Drawing.Size(800, 528);
+            this.Controls.Add(this.updateDirs);
             this.Controls.Add(this.clipboardText);
             this.Controls.Add(this.keyCountLabel);
             this.Controls.Add(this.removeKeyButton);
@@ -232,6 +256,7 @@ namespace HDProject
         private System.Windows.Forms.Button removeKeyButton;
         private System.Windows.Forms.Label keyCountLabel;
         private System.Windows.Forms.Label clipboardText;
+        private System.Windows.Forms.Button updateDirs;
     }
 }
 

@@ -21,7 +21,7 @@ namespace HDProject
         public HDForm()
         {
             InitializeComponent();
-            originTextbox.Text = "C:\\Users\\matyX6\\Desktop\\HDPiano";
+            originTextbox.Text = "C:\\Users\\matyX6\\Desktop\\HDPiano\\";
         }
 
         #region labels
@@ -55,6 +55,11 @@ namespace HDProject
             UpdateVideosListIndexes();
         }
 
+        private void updateDirs_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
         private void keyList_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,7 +71,29 @@ namespace HDProject
             }
         }
 
-#region methods
+        #region buttonPresses
+
+        private void videoTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddVideoToList();
+                UpdateVideosListIndexes();
+            }
+        }
+
+        private void keyTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddKeyToList();
+                UpdateKeyCountLabel();
+            }
+        }
+
+        #endregion
+
+        #region methods
         private void UpdateVideosListIndexes()
         {
             for (int i = 0; i < videoList.Items.Count; i++)
