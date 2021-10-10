@@ -68,6 +68,7 @@ namespace HDProject
             this.originTextbox.Name = "originTextbox";
             this.originTextbox.Size = new System.Drawing.Size(365, 22);
             this.originTextbox.TabIndex = 5;
+            this.originTextbox.TextChanged += new System.EventHandler(this.originTextbox_TextChanged);
             // 
             // artistLabel
             // 
@@ -93,6 +94,7 @@ namespace HDProject
             this.artistTextbox.Name = "artistTextbox";
             this.artistTextbox.Size = new System.Drawing.Size(215, 22);
             this.artistTextbox.TabIndex = 1;
+            this.artistTextbox.TextChanged += new System.EventHandler(this.artistTextbox_TextChanged);
             // 
             // songTextbox
             // 
@@ -100,6 +102,7 @@ namespace HDProject
             this.songTextbox.Name = "songTextbox";
             this.songTextbox.Size = new System.Drawing.Size(215, 22);
             this.songTextbox.TabIndex = 2;
+            this.songTextbox.TextChanged += new System.EventHandler(this.songTextbox_TextChanged);
             // 
             // keyList
             // 

@@ -18,19 +18,25 @@ namespace HDProject
         private const string WVIDEO_KEYWORD = "wvideo=";
         private const string CLIPBOARD_LABEL = "Clipboard: ";
         private const string COUNT_LABEL = "Count: ";
-        private const string AUTO_COMPLETE_PATH = "C:\\Users\\matyX6\\Desktop\\HDPiano\\autoDB.txt";
         private const string INVALID_PATH_MESSAGE = "Path is not valid.";
         private const string INVALID_FILE_NAME_MESSAGE = "File name is not valid.";
         private const string ERROR_CAPTION = "Error";
 
 
         private string FullPath => originTextbox.Text + "\\" + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
+        private string AutoCompletePath => Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "\\autoDB.txt";
+        private string SaveStatePath => Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "\\saveDB.txt";
 
 
         public HDForm()
         {
             InitializeComponent();
-            originTextbox.Text = "C:\\Users\\matyX6\\Desktop\\HDPiano";
+            Init();
+        }
+
+        private void Init()
+        {
+            LoadBaseValues();
             UpdateVideoAutocompleteSource();
         }
 
@@ -38,9 +44,35 @@ namespace HDProject
         #endregion
 
         #region textboxes
+        private void originTextbox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSaveDB();
+        }
+
+        private void artistTextbox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSaveDB();
+        }
+
+        private void songTextbox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSaveDB();
+        }
         #endregion
 
         #region buttons
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                    originTextbox.Text = fbd.SelectedPath;
+            }
+        }
+
         private void addKeyButton_Click(object sender, EventArgs e)
         {
             AddKeyToList();
@@ -53,11 +85,11 @@ namespace HDProject
             UpdateKeyCountLabel();
         }
 
-
         private void addVideoButton_Click(object sender, EventArgs e)
         {
             AddVideo();
         }
+
         private void removeVideoButton_Click(object sender, EventArgs e)
         {
             RemoveVideoFromList();
@@ -101,51 +133,9 @@ namespace HDProject
                 }
             }
         }
-
-        private bool TryValidatePath(out string message)
-        {
-            message = "";
-
-            if (!TryValidate(Path.GetInvalidPathChars(), FullPath))
-            {
-                message = INVALID_PATH_MESSAGE;
-                return false;
-            }
-
-            if (!TryValidate(Path.GetInvalidFileNameChars(), FullPath))
-            {
-                message = INVALID_PATH_MESSAGE;
-                return false;
-            }
-
-
-            return true;
-        }
-
-        private bool TryValidateFileName(string entry, out string message)
-        {
-            message = "";
-
-            if (!TryValidate(Path.GetInvalidFileNameChars(), entry))
-            {
-                message = INVALID_FILE_NAME_MESSAGE;
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool TryValidate(char[] forbiddenCharacters, string entry)
-        {
-            for (int i = 0; i < forbiddenCharacters.Length; i++)
-                if (entry.Contains(forbiddenCharacters[i]))
-                    return false;
-
-            return true;
-        }
-
         #endregion
 
+        #region lists
         private void keyList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (keyList.SelectedItem != null)
@@ -154,6 +144,7 @@ namespace HDProject
                 clipboardText.Text = CLIPBOARD_LABEL + Clipboard.GetText();
             }
         }
+        #endregion
 
         #region buttonPresses
 
@@ -162,6 +153,19 @@ namespace HDProject
             if (e.KeyCode == Keys.Enter)
                 AddVideo();
         }
+
+        private void keyTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddKeyToList();
+                UpdateKeyCountLabel();
+            }
+        }
+
+        #endregion
+
+        #region methods
 
         private void AddVideo()
         {
@@ -177,18 +181,6 @@ namespace HDProject
             UpdateVideosListIndexes();
         }
 
-        private void keyTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                AddKeyToList();
-                UpdateKeyCountLabel();
-            }
-        }
-
-        #endregion
-
-        #region methods
         private void UpdateVideosListIndexes()
         {
             for (int i = 0; i < videoList.Items.Count; i++)
@@ -217,30 +209,70 @@ namespace HDProject
         //make sure that you use this method before text box is cleared
         private void AddVideoNameToDatabase()
         {
-            StreamReader sr = new StreamReader(AUTO_COMPLETE_PATH);
+            StreamReader sr = new StreamReader(AutoCompletePath);
             string contents = sr.ReadToEnd();
             sr.Close();
 
             if (!contents.Contains(videoTextbox.Text))
             {
-                StreamWriter sw = new StreamWriter(AUTO_COMPLETE_PATH, true);
+                StreamWriter sw = new StreamWriter(AutoCompletePath, true);
                 sw.WriteLine(videoTextbox.Text);
                 sw.Close();
             }
         }
 
+        private void LoadBaseValues()
+        {
+            //fixed three entries in saveDB.txt
+
+            if (File.Exists(SaveStatePath))
+            {
+                string[] autoSource = File.ReadAllLines(SaveStatePath);
+                originTextbox.Text = autoSource[0];
+                artistTextbox.Text = autoSource[1];
+                songTextbox.Text = autoSource[2];
+            }
+            else
+            {
+                CreateNewSaveDB("", "", "");
+            }
+        }
+
+        private void UpdateSaveDB()
+        {
+            if (File.Exists(SaveStatePath))
+            {
+                File.Delete(SaveStatePath);
+                CreateNewSaveDB(originTextbox.Text, artistTextbox.Text, songTextbox.Text);
+            }
+            else
+            {
+                CreateNewSaveDB("", "", "");
+            }
+        }
+
+        private void CreateNewSaveDB(string origin, string artist, string audio)
+        {
+            StreamWriter sw = new StreamWriter(SaveStatePath);
+            sw.WriteLine(origin);
+            sw.WriteLine(artist);
+            sw.WriteLine(audio);
+            sw.Close();
+        }
+
         private void UpdateVideoAutocompleteSource()
         {
-            videoTextbox.AutoCompleteCustomSource.Clear();
 
-            if (File.Exists(AUTO_COMPLETE_PATH))
+            if (File.Exists(AutoCompletePath))
             {
-                string[] autoSource = File.ReadAllLines(AUTO_COMPLETE_PATH);
+                videoTextbox.AutoCompleteCustomSource.Clear();
+
+                string[] autoSource = File.ReadAllLines(AutoCompletePath);
                 videoTextbox.AutoCompleteCustomSource.AddRange(autoSource);
             }
             else
             {
-                FileStream fs = File.Create(AUTO_COMPLETE_PATH);
+                FileStream fs = File.Create(AutoCompletePath);
                 fs.Close();
             }
         }
@@ -270,17 +302,41 @@ namespace HDProject
         {
             keyCountLabel.Text = COUNT_LABEL + keyList.Items.Count;
         }
-        #endregion
 
-        private void browseButton_Click(object sender, EventArgs e)
+        private bool TryValidatePath(out string message)
         {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                DialogResult result = fbd.ShowDialog();
+            message = "";
 
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                    originTextbox.Text = fbd.SelectedPath;
+            if (!TryValidate(Path.GetInvalidPathChars(), FullPath))
+            {
+                message = INVALID_PATH_MESSAGE;
+                return false;
             }
+
+            return true;
         }
+
+        private bool TryValidateFileName(string entry, out string message)
+        {
+            message = "";
+
+            if (!TryValidate(Path.GetInvalidFileNameChars(), entry) || string.IsNullOrEmpty(entry))
+            {
+                message = INVALID_FILE_NAME_MESSAGE;
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool TryValidate(char[] forbiddenCharacters, string entry)
+        {
+            for (int i = 0; i < forbiddenCharacters.Length; i++)
+                if (entry.Contains(forbiddenCharacters[i]))
+                    return false;
+
+            return true;
+        }
+        #endregion
     }
 }
