@@ -24,11 +24,11 @@ namespace HDProject
         private string FullPath => originTextbox.Text + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
 
 
-
         public HDForm()
         {
             InitializeComponent();
             originTextbox.Text = "C:\\Users\\matyX6\\Desktop\\HDPiano\\";
+            UpdateVideoAutocompleteSource();
         }
 
         #region labels
@@ -53,9 +53,7 @@ namespace HDProject
 
         private void addVideoButton_Click(object sender, EventArgs e)
         {
-            AddVideoToList();
-            UpdateVideosListIndexes();
-            AddVideoNameToAutocomplete();
+            AddVideo();
         }
         private void removeVideoButton_Click(object sender, EventArgs e)
         {
@@ -95,11 +93,15 @@ namespace HDProject
         private void videoTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                AddVideoToList();
-                UpdateVideosListIndexes();
-                AddVideoNameToAutocomplete();
-            }
+                AddVideo();
+        }
+
+        private void AddVideo()
+        {
+            AddVideoNameToDatabase();
+            UpdateVideoAutocompleteSource();
+            AddVideoToList();
+            UpdateVideosListIndexes();
         }
 
         private void keyTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -139,12 +141,35 @@ namespace HDProject
                 videoTextbox.Clear();
         }
 
-        private void AddVideoNameToAutocomplete()
+        //make sure that you use this method before text box is cleared
+        private void AddVideoNameToDatabase()
         {
-            StreamWriter sw = File.CreateText(AUTO_COMPLETE_PATH);
-            sw.WriteLine(videoTextbox.Text.ToString());
-            sw.Flush();
-            sw.Close();
+            StreamReader sr = new StreamReader(AUTO_COMPLETE_PATH);
+            string contents = sr.ReadToEnd();
+            sr.Close();
+
+            if (!contents.Contains(videoTextbox.Text))
+            {
+                StreamWriter sw = new StreamWriter(AUTO_COMPLETE_PATH, true);
+                sw.WriteLine(videoTextbox.Text);
+                sw.Close();
+            }
+        }
+
+        private void UpdateVideoAutocompleteSource()
+        {
+            videoTextbox.AutoCompleteCustomSource.Clear();
+
+            if (File.Exists(AUTO_COMPLETE_PATH))
+            {
+                string[] autoSource = File.ReadAllLines(AUTO_COMPLETE_PATH);
+                videoTextbox.AutoCompleteCustomSource.AddRange(autoSource);
+            }
+            else
+            {
+                FileStream fs = File.Create(AUTO_COMPLETE_PATH);
+                fs.Close();
+            }
         }
 
         private void AddKeyToList()

@@ -140,6 +140,10 @@ namespace HDProject
             // 
             // videoTextbox
             // 
+            this.videoTextbox.AutoCompleteCustomSource.AddRange(new string[] {
+            "formula1"});
+            this.videoTextbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.videoTextbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.videoTextbox.Location = new System.Drawing.Point(64, 155);
             this.videoTextbox.Name = "videoTextbox";
             this.videoTextbox.Size = new System.Drawing.Size(218, 22);
