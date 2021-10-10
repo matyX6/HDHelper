@@ -335,7 +335,7 @@ namespace HDProject
             this.Controls.Add(this.originTextbox);
             this.Controls.Add(this.originLabel);
             this.Name = "HDHelper";
-            this.Text = "HDForm";
+            this.Text = "HD Helper";
             this.ResumeLayout(false);
             this.PerformLayout();
 
