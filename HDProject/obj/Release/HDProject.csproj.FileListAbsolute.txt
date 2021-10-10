@@ -1,0 +1,12 @@
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Release\HDProject.exe.config
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Release\HDProject.exe
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Release\HDProject.pdb
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Release\SharpClipboard.dll
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\bin\Release\SharpClipboard.xml
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Release\HDProject.HDHelper.resources
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Release\HDProject.Properties.Resources.resources
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Release\HDProject.csproj.GenerateResource.cache
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Release\HDProject.csproj.CoreCompileInputs.cache
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Release\HDProject.csproj.CopyComplete
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Release\HDProject.exe
+C:\Users\matyX6\Desktop\HDProject\HDProject\HDProject\obj\Release\HDProject.pdb

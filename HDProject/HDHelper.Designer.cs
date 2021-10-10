@@ -51,9 +51,9 @@ namespace HDProject
             this.clearKeysButton = new System.Windows.Forms.Button();
             this.clearAllButton = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
-            this.pathBodyLabel = new System.Windows.Forms.Label();
             this.linkLabel = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.pathBodyLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // originLabel
@@ -275,21 +275,12 @@ namespace HDProject
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
-            // pathBodyLabel
-            // 
-            this.pathBodyLabel.Location = new System.Drawing.Point(582, 45);
-            this.pathBodyLabel.Name = "pathBodyLabel";
-            this.pathBodyLabel.Size = new System.Drawing.Size(193, 85);
-            this.pathBodyLabel.TabIndex = 23;
-            this.pathBodyLabel.Text = "Full Path:";
-            // 
             // linkLabel
             // 
             this.linkLabel.Location = new System.Drawing.Point(582, 153);
             this.linkLabel.Name = "linkLabel";
             this.linkLabel.Size = new System.Drawing.Size(193, 23);
             this.linkLabel.TabIndex = 24;
-            this.linkLabel.TabStop = true;
             this.linkLabel.Text = "Download videos from here";
             this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_LinkClicked);
             // 
@@ -299,9 +290,18 @@ namespace HDProject
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(193, 23);
             this.linkLabel2.TabIndex = 25;
-            this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "HD Piano Website";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // pathBodyLabel
+            // 
+            this.pathBodyLabel.LinkColor = System.Drawing.Color.Black;
+            this.pathBodyLabel.Location = new System.Drawing.Point(582, 45);
+            this.pathBodyLabel.Name = "pathBodyLabel";
+            this.pathBodyLabel.Size = new System.Drawing.Size(193, 85);
+            this.pathBodyLabel.TabIndex = 26;
+            this.pathBodyLabel.Text = "Full Path:";
+            this.pathBodyLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.pathBodyLabel_LinkClicked);
             // 
             // HDHelper
             // 
@@ -309,9 +309,9 @@ namespace HDProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(845, 481);
+            this.Controls.Add(this.pathBodyLabel);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel);
-            this.Controls.Add(this.pathBodyLabel);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.clearAllButton);
             this.Controls.Add(this.clearKeysButton);
@@ -365,9 +365,9 @@ namespace HDProject
         private System.Windows.Forms.Button clearKeysButton;
         private System.Windows.Forms.Button clearAllButton;
         private System.Windows.Forms.Button browseButton;
-        private System.Windows.Forms.Label pathBodyLabel;
         private System.Windows.Forms.LinkLabel linkLabel;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel pathBodyLabel;
     }
 }
 

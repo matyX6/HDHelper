@@ -22,13 +22,17 @@ namespace HDProject
         private const string COUNT_LABEL = "Count: ";
         private const string INVALID_PATH_MESSAGE = "Path is not valid.";
         private const string INVALID_FILE_NAME_MESSAGE = "File name is not valid.";
+        private const string PATH_DOES_NOT_EXIST = "Path does not exist.";
         private const string ERROR_CAPTION = "Error";
         private const string HD_PIANO_URL = "https://hdpiano.com/";
         private const string GET_VIDEO_URL = "https://getvideo.at/en/";
 
         private SharpClipboard clipboard = new SharpClipboard();
 
-        private string FullPath => originTextbox.Text + "\\" + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
+        private string FullPath =>
+            (String.IsNullOrEmpty(originTextbox.Text) ? "" : (originTextbox.Text + "\\")) +
+            (String.IsNullOrEmpty(artistTextbox.Text) ? "" : (artistTextbox.Text + "\\")) +
+            (String.IsNullOrEmpty(songTextbox.Text) ? "" : (songTextbox.Text + "\\"));
         private string AutoCompletePath => Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "\\autoDB.txt";
         private string SaveStatePath => Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "\\saveDB.txt";
 
@@ -49,6 +53,22 @@ namespace HDProject
         }
 
         #region labels
+        private void pathBodyLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (Directory.Exists(FullPath))
+                Process.Start(FullPath);
+            else
+                MessageBox.Show(PATH_DOES_NOT_EXIST, ERROR_CAPTION);
+        }
+
+        private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(GET_VIDEO_URL);
+        }
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(HD_PIANO_URL);
+        }
         #endregion
 
         #region textboxes
@@ -121,15 +141,6 @@ namespace HDProject
         {
             clearVideosButton_Click(sender, e);
             clearKeysButton_Click(sender, e);
-        }
-
-        private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(GET_VIDEO_URL);
-        }
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(HD_PIANO_URL);
         }
 
         private void updateDirs_Click(object sender, EventArgs e)
