@@ -1,7 +1,7 @@
 ﻿
 namespace HDProject
 {
-    partial class HDForm
+    partial class HDHelper
     {
         /// <summary>
         /// Required designer variable.
@@ -281,6 +281,7 @@ namespace HDProject
             this.pathBodyLabel.Name = "pathBodyLabel";
             this.pathBodyLabel.Size = new System.Drawing.Size(193, 85);
             this.pathBodyLabel.TabIndex = 23;
+            this.pathBodyLabel.Text = "Full Path:";
             // 
             // linkLabel
             // 
@@ -302,12 +303,12 @@ namespace HDProject
             this.linkLabel2.Text = "HD Piano Website";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
-            // HDForm
+            // HDHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(845, 561);
+            this.ClientSize = new System.Drawing.Size(845, 481);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.pathBodyLabel);
@@ -333,7 +334,7 @@ namespace HDProject
             this.Controls.Add(this.artistLabel);
             this.Controls.Add(this.originTextbox);
             this.Controls.Add(this.originLabel);
-            this.Name = "HDForm";
+            this.Name = "HDHelper";
             this.Text = "HDForm";
             this.ResumeLayout(false);
             this.PerformLayout();

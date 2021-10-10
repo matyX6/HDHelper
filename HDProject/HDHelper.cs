@@ -14,7 +14,7 @@ using WK.Libraries.SharpClipboardNS;
 
 namespace HDProject
 {
-    public partial class HDForm : Form
+    public partial class HDHelper : Form
     {
         private const string WISTIA_EMBED = "https://fast.wistia.net/embed/iframe/";
         private const string WVIDEO_KEYWORD = "wvideo=";
@@ -33,7 +33,7 @@ namespace HDProject
         private string SaveStatePath => Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "\\saveDB.txt";
 
 
-        public HDForm()
+        public HDHelper()
         {
             InitializeComponent();
             Init();

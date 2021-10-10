@@ -51,16 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HDForm.cs">
+    <Compile Include="HDHelper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HDForm.Designer.cs">
-      <DependentUpon>HDForm.cs</DependentUpon>
+    <Compile Include="HDHelper.Designer.cs">
+      <DependentUpon>HDHelper.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="HDForm.resx">
-      <DependentUpon>HDForm.cs</DependentUpon>
+    <EmbeddedResource Include="HDHelper.resx">
+      <DependentUpon>HDHelper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

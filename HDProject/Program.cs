@@ -16,7 +16,7 @@ namespace HDProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HDForm());
+            Application.Run(new HDHelper());
         }
     }
 }
