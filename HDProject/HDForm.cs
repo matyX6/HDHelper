@@ -19,6 +19,9 @@ namespace HDProject
         private const string CLIPBOARD_LABEL = "Clipboard: ";
         private const string COUNT_LABEL = "Count: ";
         private const string AUTO_COMPLETE_PATH = "C:\\Users\\matyX6\\Desktop\\HDPiano\\autoDB.txt";
+        private const string INVALID_PATH_MESSAGE = "Path is not valid.";
+        private const string INVALID_FILE_NAME_MESSAGE = "File name is not valid.";
+        private const string ERROR_CAPTION = "Error";
 
 
         private string FullPath => originTextbox.Text + artistTextbox.Text + "\\" + songTextbox.Text + "\\";
@@ -79,6 +82,12 @@ namespace HDProject
 
         private void updateDirs_Click(object sender, EventArgs e)
         {
+            if (!TryValidatePath(out string message))
+            {
+                MessageBox.Show(message, ERROR_CAPTION);
+                return;
+            }
+
             Directory.CreateDirectory(FullPath);
 
             for (int i = 0; i < videoList.Items.Count; i++)
@@ -91,6 +100,48 @@ namespace HDProject
                     fs.Close();
                 }
             }
+        }
+
+        private bool TryValidatePath(out string message)
+        {
+            message = "";
+
+            if (!TryValidate(Path.GetInvalidPathChars(), FullPath))
+            {
+                message = INVALID_PATH_MESSAGE;
+                return false;
+            }
+
+            if (!TryValidate(Path.GetInvalidFileNameChars(), FullPath))
+            {
+                message = INVALID_PATH_MESSAGE;
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool TryValidateFileName(string entry, out string message)
+        {
+            message = "";
+
+            if (!TryValidate(Path.GetInvalidFileNameChars(), entry))
+            {
+                message = INVALID_FILE_NAME_MESSAGE;
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool TryValidate(char[] forbiddenCharacters, string entry)
+        {
+            for (int i = 0; i < forbiddenCharacters.Length; i++)
+                if (entry.Contains(forbiddenCharacters[i]))
+                    return false;
+
+            return true;
         }
 
         #endregion
@@ -114,6 +165,12 @@ namespace HDProject
 
         private void AddVideo()
         {
+            if (!TryValidateFileName(videoTextbox.Text, out string message))
+            {
+                MessageBox.Show(message, ERROR_CAPTION);
+                return;
+            }
+
             AddVideoNameToDatabase();
             UpdateVideoAutocompleteSource();
             AddVideoToList();

@@ -66,7 +66,7 @@ namespace HDProject
             this.originTextbox.Location = new System.Drawing.Point(64, 9);
             this.originTextbox.Name = "originTextbox";
             this.originTextbox.Size = new System.Drawing.Size(453, 22);
-            this.originTextbox.TabIndex = 1;
+            this.originTextbox.TabIndex = 5;
             // 
             // artistLabel
             // 
@@ -91,14 +91,14 @@ namespace HDProject
             this.artistTextbox.Location = new System.Drawing.Point(64, 45);
             this.artistTextbox.Name = "artistTextbox";
             this.artistTextbox.Size = new System.Drawing.Size(215, 22);
-            this.artistTextbox.TabIndex = 2;
+            this.artistTextbox.TabIndex = 1;
             // 
             // songTextbox
             // 
             this.songTextbox.Location = new System.Drawing.Point(64, 78);
             this.songTextbox.Name = "songTextbox";
             this.songTextbox.Size = new System.Drawing.Size(215, 22);
-            this.songTextbox.TabIndex = 3;
+            this.songTextbox.TabIndex = 2;
             // 
             // keyList
             // 
@@ -117,7 +117,7 @@ namespace HDProject
             this.keyTextBox.Location = new System.Drawing.Point(15, 249);
             this.keyTextBox.Name = "keyTextBox";
             this.keyTextBox.Size = new System.Drawing.Size(502, 22);
-            this.keyTextBox.TabIndex = 5;
+            this.keyTextBox.TabIndex = 4;
             this.keyTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyTextBox_KeyDown);
             // 
             // addKeyButton
@@ -151,7 +151,7 @@ namespace HDProject
             this.videoTextbox.Location = new System.Drawing.Point(64, 155);
             this.videoTextbox.Name = "videoTextbox";
             this.videoTextbox.Size = new System.Drawing.Size(218, 22);
-            this.videoTextbox.TabIndex = 4;
+            this.videoTextbox.TabIndex = 3;
             this.videoTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.videoTextbox_KeyDown);
             // 
             // addVideoButton
